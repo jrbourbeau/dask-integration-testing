@@ -33,6 +33,7 @@ class DaskSource():
     def install(self, env):
         setup_git(self)
         execute("conda run -n {} pip install -e .".format(env))
+        os.chdir('../')
 
 
 class XarrayTests(IntegrationTestProject):
