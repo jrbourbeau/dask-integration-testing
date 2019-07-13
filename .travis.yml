@@ -1,0 +1,12 @@
+sudo: false
+language: python
+cache: pip
+matrix:
+    include:
+        - env: TARGET=xarray
+install:
+    - pip install texasbbq
+script:
+    - ./switchboard.py -t $TARGET
+notifications:
+    email: false
