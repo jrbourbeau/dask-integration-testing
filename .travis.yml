@@ -4,8 +4,8 @@ matrix:
     include:
         - env: TARGET=xarray
 install:
-    - pip install texasbbq
+    - pip install git+https://github.com/numba/texasbbq
 script:
-    - ./switchboard.py -t $TARGET
+    - python switchboard.py -t $TARGET
 notifications:
     email: false
