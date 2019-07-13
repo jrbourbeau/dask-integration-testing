@@ -26,6 +26,10 @@ class DaskSource():
     def clone_url(self):
         return "https://github.com/dask/dask"
 
+    @property
+    def target_tag(self):
+        return "master"
+
     def install(self, env):
         setup_git(self)
         execute("conda run -n {} pip install -e .".format(env))
