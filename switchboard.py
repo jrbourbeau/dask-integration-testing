@@ -46,8 +46,7 @@ class XarrayTests(IntegrationTestProject):
 
     @property
     def target_tag(self):
-        return([t for t in git_ls_remote_tags(self.clone_url) if not
-                t.startswith("v")][-1])
+        return "master"
 
     @property
     def conda_dependencies(self):
