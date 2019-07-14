@@ -1,17 +1,7 @@
-import os
-
-from texasbbq import (
-    main,
-    execute,
-    conda_install,
-    git_ls_remote_tags,
-    IntegrationTestGitSource,
-    IntegrationTestProject,
-    setup_git,
-)
+from texasbbq import main, GitSource, GitTarget
 
 
-class DaskSource(IntegrationTestGitSource):
+class DaskSource(GitSource):
 
     module = __name__
 
@@ -32,7 +22,7 @@ class DaskSource(IntegrationTestGitSource):
         return "pip install -e ."
 
 
-class XarrayTests(IntegrationTestProject):
+class XarrayTests(GitTarget):
     @property
     def name(self):
         return "xarray"
@@ -42,7 +32,7 @@ class XarrayTests(IntegrationTestProject):
         return "https://github.com/pydata/xarray"
 
     @property
-    def target_tag(self):
+    def git_ref(self):
         return "master"
 
     @property
@@ -53,11 +43,13 @@ class XarrayTests(IntegrationTestProject):
         all_deps = required + optional + testing
         return [" ".join(all_deps)]
 
-    def install(self):
-        execute("pip install -e .")
+    @property
+    def install_command(self):
+        return "pip install -e ."
 
-    def run_tests(self):
-        execute("pytest xarray")
+    @property
+    def test_command(self):
+        return "pytest xarray"
 
 
 if __name__ == "__main__":
