@@ -52,15 +52,7 @@ class XarrayTests(IntegrationTestProject):
     @property
     def conda_dependencies(self):
         required = ["numpy", "pandas"]
-        optional = [
-            "scipy",
-            "zarr",
-            "netCDF4",
-            "bottleneck",
-            "cartopy",
-            "pynio",
-            "pseudonetcdf",
-        ]
+        optional = ["scipy", "zarr", "netCDF4", "bottleneck", "cartopy", "pynio"]
         testing = ["pytest"]
         all_deps = required + optional + testing
         return [" ".join(all_deps)]
