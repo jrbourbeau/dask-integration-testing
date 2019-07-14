@@ -5,12 +5,13 @@ from texasbbq import (
     execute,
     conda_install,
     git_ls_remote_tags,
+    IntegrationTestGitSource,
     IntegrationTestProject,
     setup_git,
 )
 
 
-class DaskSource:
+class DaskSource(IntegrationTestGitSource):
 
     module = __name__
 
@@ -19,21 +20,16 @@ class DaskSource:
         return "dask"
 
     @property
-    def needs_clone(self):
-        return bool(self.clone_url)
-
-    @property
     def clone_url(self):
         return "https://github.com/dask/dask"
 
     @property
-    def target_tag(self):
+    def git_ref(self):
         return "master"
 
-    def install(self, env):
-        setup_git(self)
-        execute("conda run -n {} pip install -e .".format(env))
-        os.chdir("../")
+    @property
+    def install_command(self, env):
+        return "pip install -e ."
 
 
 class XarrayTests(IntegrationTestProject):
