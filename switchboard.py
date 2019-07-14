@@ -28,7 +28,7 @@ class DaskSource(IntegrationTestGitSource):
         return "master"
 
     @property
-    def install_command(self, env):
+    def install_command(self):
         return "pip install -e ."
 
 
