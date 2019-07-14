@@ -69,7 +69,7 @@ class XarrayTests(IntegrationTestProject):
         execute("pip install -e .")
 
     def run_tests(self):
-        execute("pytest xarray")
+        execute("py.test --pyargs xarray")
 
 
 if __name__ == "__main__":
