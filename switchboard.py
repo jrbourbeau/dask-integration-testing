@@ -63,7 +63,7 @@ class XarrayTests(IntegrationTestProject):
         ]
         testing = ["pytest"]
         all_deps = required + optional + testing
-        return " ".join(all_deps)
+        return [" ".join(all_deps)]
 
     def install(self):
         execute("pip install -e .")
