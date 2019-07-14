@@ -51,7 +51,7 @@ class XarrayTests(IntegrationTestProject):
 
     @property
     def conda_dependencies(self):
-        required = ["python=3.6", "numpy", "pandas"]
+        required = ["numpy", "pandas"]
         optional = ["scipy", "zarr", "netCDF4", "bottleneck"]
         testing = ["pytest", "hypothesis"]
         all_deps = required + optional + testing
@@ -61,7 +61,7 @@ class XarrayTests(IntegrationTestProject):
         execute("pip install -e .")
 
     def run_tests(self):
-        execute("python -m pytest xarray")
+        execute("pytest xarray")
 
 
 if __name__ == "__main__":
