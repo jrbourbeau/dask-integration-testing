@@ -68,6 +68,7 @@ class ScikitImageTests(GitTarget):
     @property
     def conda_dependencies(self):
         build = [
+            "cython",
             "numpy",
             "scipy",
             "matplotlib",
