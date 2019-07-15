@@ -37,7 +37,7 @@ class XarrayTests(GitTarget):
 
     @property
     def conda_dependencies(self):
-        required = ["numpy", "pandas"]
+        required = ["numpy", "pandas", "toolz"]
         optional = ["scipy", "zarr", "netCDF4", "bottleneck"]
         testing = ["pytest", "hypothesis"]
         all_deps = required + optional + testing
