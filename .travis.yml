@@ -1,0 +1,11 @@
+language: python
+cache: pip
+matrix:
+    include:
+        - env: TARGET=xarray
+install:
+    - pip install git+https://github.com/numba/texasbbq
+script:
+    - python switchboard.py -t $TARGET
+notifications:
+    email: false
