@@ -79,7 +79,7 @@ class ScikitImageTests(GitTarget):
         optional = ["toolz"]
         testing = ["pytest", "pytest-localserver", "pytest-faulthandler"]
         all_deps = build + optional + testing
-        return [" ".join(all_deps)]
+        return ["-c conda-forge " + " ".join(all_deps)]
 
     @property
     def install_command(self):
