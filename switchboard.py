@@ -88,7 +88,7 @@ class ScikitImageTests(GitTarget):
 
     @property
     def test_command(self):
-        return "pytest -sv skimage"
+        return "MPLBACKEND='Agg' pytest -sv skimage"
 
 
 if __name__ == "__main__":
