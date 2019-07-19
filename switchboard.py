@@ -18,6 +18,10 @@ class DaskSource(GitSource):
         return "master"
 
     @property
+    def conda_dependencies(self):
+        return ["toolz numpy fsspec"]
+
+    @property
     def install_command(self):
         return "pip install -e ."
 
@@ -37,7 +41,7 @@ class XarrayTests(GitTarget):
 
     @property
     def conda_dependencies(self):
-        required = ["numpy", "pandas", "toolz"]
+        required = ["numpy", "pandas"]
         optional = ["scipy", "zarr", "netCDF4", "bottleneck"]
         testing = ["pytest", "hypothesis"]
         all_deps = required + optional + testing
