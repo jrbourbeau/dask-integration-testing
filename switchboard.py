@@ -19,7 +19,7 @@ class DaskSource(GitSource):
 
     @property
     def conda_dependencies(self):
-        return ["toolz numpy fsspec"]
+        return ["-c conda-forge toolz numpy fsspec"]
 
     @property
     def install_command(self):
