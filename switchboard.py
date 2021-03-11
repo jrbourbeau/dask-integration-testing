@@ -56,5 +56,44 @@ class XarrayTests(GitTarget):
         return "pytest xarray"
 
 
+class ScikitImageTests(GitTarget):
+    @property
+    def name(self):
+        return "scikit-image"
+
+    @property
+    def clone_url(self):
+        return "https://github.com/scikit-image/scikit-image"
+
+    @property
+    def git_ref(self):
+        return "master"
+
+    @property
+    def conda_dependencies(self):
+        build = [
+            "cython",
+            "numpy",
+            "scipy",
+            "matplotlib",
+            "networkx",
+            "pillow",
+            "imageio",
+            "PyWavelets",
+        ]
+        optional = ["toolz"]
+        testing = ["pytest", "pytest-localserver", "pytest-faulthandler"]
+        all_deps = build + optional + testing
+        return ["-c conda-forge " + " ".join(all_deps)]
+
+    @property
+    def install_command(self):
+        return "pip install -e ."
+
+    @property
+    def test_command(self):
+        return "MPLBACKEND='Agg' pytest -sv skimage"
+
+
 if __name__ == "__main__":
     main(DaskSource())

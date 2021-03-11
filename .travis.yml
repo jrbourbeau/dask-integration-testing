@@ -3,6 +3,7 @@ cache: pip
 matrix:
     include:
         - env: TARGET=xarray
+        - env: TARGET=scikit-image
 install:
     - pip install git+https://github.com/numba/texasbbq
 script:
